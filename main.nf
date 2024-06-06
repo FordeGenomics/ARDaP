@@ -387,7 +387,7 @@ process Deduplicate {
     set id, file("${id}_resfinder.txt") into abr_report_resfinder_ch_2
 
     """
-    gatk --java-options -Xmx${task.memory.toString().replaceAll(/[\sB]/,'')} MarkDuplicates -I "${id}.bam" -O ${id}.dedup.bam --REMOVE_DUPLICATES true \
+    gatk --java-options -Xmx${task.memory.toString().replaceAll(/[\sB]/,'')} MarkDuplicates -I "${id}.bam" -O ${id}.dedup.bam --ASSUME_SORT_ORDER true --REMOVE_DUPLICATES true \
     --METRICS_FILE ${id}.dedup.txt --VALIDATION_STRINGENCY LENIENT
     samtools index ${id}.dedup.bam
 
